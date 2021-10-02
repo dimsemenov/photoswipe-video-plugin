@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="stylesheet" href="./lib/photoswipe/photoswipe.css">
+
+    <!-- demo styles, ignore em-->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        background: #eee;
+      }
+      h1 {
+        margin: 0;
+        padding: 50px 50px 30px 50px;
+        font-size: 26px;
+        line-height: 1.3;
+      }
+      .pswp-gallery img {
+        display: block;
+        max-width: 520px;
+        margin-bottom: 4px;
+        width: auto;
+        max-width: 100%;
+      }
+      .pswp-gallery {
+        max-width: 600px;
+        padding: 20px 50px 20px;
+        background: #eee;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .pswp-gallery a {
+        display: block;
+      }
+
+      .pswp-test {
+        margin-left:50px;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+      }
+      .pswp-test label {
+        background: #fbfbfb;
+        padding: 4px;
+        border-radius: 4px;
+        margin-bottom: 6px;
+        font-size: 16px;
+        line-height: 1;
+      }
+      p {
+        padding: 4px 50px 8px;
+        margin: 0;
+        max-width: 600px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="main-page-content">
+    <h1><a href="https://github.com/dimsemenov/photoswipe-video-plugin">Video plugin</a> for the <a href="https://photoswipe.com">PhotoSwipe</a></h1>
+
+    <div class="pswp-gallery" id="gallery">
+        <a href="video/1/video.mp4" 
+          data-pswp-width="1920" 
+          data-pswp-height="1080" 
+          data-pswp-type="video"
+          target="_blank">
+          <img src="video/1/thumb.jpeg" alt="" />
+        </a>
+
+        <a href="https://example.com/test-video-link" 
+          data-pswp-video-src="video/2/video.mp4"
+          data-pswp-video-type="video/mp4"
+          data-pswp-width="1080" 
+          data-pswp-height="2048" 
+          data-pswp-type="video"
+          target="_blank">
+          <img src="video/2/thumb.jpeg" alt="" />
+        </a>
+
+        <a href="video/3/video.mp4" 
+          data-pswp-width="1920" 
+          data-pswp-height="1080" 
+          data-pswp-type="video"
+          target="_blank">
+          <img src="video/3/thumb.jpeg" alt="" />
+        </a>
+
+      <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/1/img-2500.jpg" 
+          data-pswp-width="1875" 
+          data-pswp-height="2500" 
+          target="_blank">
+          <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/1/img-200.jpg" alt="" />
+        </a>
+      <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg" 
+          data-pswp-width="1669" 
+          data-pswp-height="2500" 
+          target="_blank">
+          <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-200.jpg" alt="" />
+        </a>
+      <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/3/img-2500.jpg" 
+          data-pswp-width="2500" 
+          data-pswp-height="1666" 
+          target="_blank">
+          <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/3/img-200.jpg" alt="" />
+        </a>
+      </div>
+
+
+      <div class="pswp-test">
+        <label for="autoplay_video">
+          <input type="checkbox" id="autoplay_video" name="autoplay_video">Autoplay video
+        </label>
+        <label for="play_inline">
+          <input type="checkbox" id="play_inline" name="play_inline">Play inline
+        </label>
+        <label for="prevent_dragging_over_video">
+          <input type="checkbox" id="prevent_dragging_over_video" name="prevent_dragging_over_video">Prevent dragging over video
+        </label>
+    </div>
+    <script>
+      /* debug stuff */
+      window.pswpTempTestVars = {
+        autoplay_video: true,
+        play_inline: true,
+        prevent_dragging_over_video: false
+      };
+      
+      for(let key in window.pswpTempTestVars) {
+        document.querySelector('#' + key).checked = window.pswpTempTestVars[key];
+      }
+      [...document.querySelectorAll('.pswp-test input')].forEach((checkbox) => {
+        checkbox.addEventListener('change', (e) => {
+          if (e.currentTarget.checked) {
+            window.pswpTempTestVars[e.currentTarget.name] = true;
+          } else {
+            window.pswpTempTestVars[e.currentTarget.name] = false;
+          }
+        });
+      });
+    </script>
+
+
+    <script type="module">
+      import PhotoSwipeLightbox from './lib/photoswipe/photoswipe-lightbox.esm.js?v=1.2';
+      import PhotoSwipeVideoPlugin from './src/index.js?v=1.2';
+
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: '#gallery',
+        children: 'a',
+    
+        pswpModule: './photoswipe.esm.js?v=1.1',
+
+        padding: {
+          top: 50,
+          bottom: 50,
+          left: 0,
+          right: 0
+        },
+        
+        // Recommended PhotoSwipe options for this plugin
+        allowPanToNext: false, // prevent swiping to the next slide when image is zoomed
+        allowMouseDrag: true, // display dragging cursor at max zoom level
+        wheelToZoom: true, // enable wheel-based zoom
+        preloader: false, // disable default loading indicator
+        zoom: false // disable default zoom button
+      });
+      
+      const videoPlugin = new PhotoSwipeVideoPlugin(lightbox, {
+        
+      });
+
+      lightbox.init();
+      </script>
+
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. </p>
+    </div>
+  </body>
+</html>

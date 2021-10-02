@@ -1,0 +1,27 @@
+{
+  "name": "photoswipe-video-plugin",
+  "version": "1.0.0",
+  "description": "TODO PhotoSwipe core:\r - Implement picture support\r - Use width and height, in addition to w and h\r - Make sure errors work correctly\r - Figure out plugin system\r - Slide content should be anything, not just image",
+  "main": "src/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimsemenov/photoswipe-video-plugin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dimsemenov/photoswipe-video-plugin/issues"
+  },
+  "homepage": "https://github.com/dimsemenov/photoswipe-video-plugin#readme",
+  "devDependencies": {
+    "rollup": "^2.58.0",
+    "rollup-plugin-terser": "^7.0.2"
+  }
+}
