@@ -58,7 +58,7 @@ If you're providing the data directly via object:
 ```js
 {
   width: 800,
-  height: 600
+  height: 600,
   type: 'video',
   msrc: 'poster.jpg',
 
