@@ -1,7 +1,7 @@
 {
   "name": "photoswipe-video-plugin",
   "version": "1.0.0",
-  "description": "TODO PhotoSwipe core:\r - Implement picture support\r - Use width and height, in addition to w and h\r - Make sure errors work correctly\r - Figure out plugin system\r - Slide content should be anything, not just image",
+  "description": "PhotoSwipe Video Plugin",
   "main": "src/index.js",
   "directories": {
     "lib": "lib"

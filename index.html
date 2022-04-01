@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width"/>
-    <link rel="stylesheet" href="./lib/photoswipe/photoswipe.css">
+    <link rel="stylesheet" href="https://unpkg.com/photoswipe/dist/photoswipe.css">
 
     <!-- demo styles, ignore em-->
     <style>
@@ -151,14 +151,14 @@
 
 
     <script type="module">
-      import PhotoSwipeLightbox from './lib/photoswipe/photoswipe-lightbox.esm.js?v=1.2';
-      import PhotoSwipeVideoPlugin from './src/index.js?v=1.2';
+      import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.js';
+      import PhotoSwipeVideoPlugin from './src/index.js';
 
       const lightbox = new PhotoSwipeLightbox({
         gallery: '#gallery',
         children: 'a',
     
-        pswpModule: './photoswipe.esm.js?v=1.1',
+        pswpModule: () => import('https://unpkg.com/photoswipe/dist/photoswipe.esm.js'),
 
         padding: {
           top: 50,
@@ -171,7 +171,6 @@
         allowPanToNext: false, // prevent swiping to the next slide when image is zoomed
         allowMouseDrag: true, // display dragging cursor at max zoom level
         wheelToZoom: true, // enable wheel-based zoom
-        preloader: false, // disable default loading indicator
         zoom: false // disable default zoom button
       });
       
