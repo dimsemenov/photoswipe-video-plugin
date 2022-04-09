@@ -1,3 +1,5 @@
+**The plugin is under development**
+
 ## Initialization
 
 The plugin requires a single JS file (grab it from `dist/photoswipe-video-plugin.esm.js`) and can be initialized like this:
