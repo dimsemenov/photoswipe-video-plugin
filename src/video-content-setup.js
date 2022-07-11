@@ -40,6 +40,7 @@ class VideoContentSetup {
           itemData.videoSrc = linkEl.href;
         }
       }
+      return itemData;
     });
   }
 
