@@ -1,3 +1,7 @@
+The plugin is under development and for now now supports only `<video>` tag.
+
+**[> Demo <](https://dimsemenov.github.io/photoswipe-video-plugin/)**
+
 ## Initialization
 
 The plugin requires a single JS file (grab it from `dist/photoswipe-video-plugin.esm.js`) and can be initialized like this:
@@ -10,7 +14,7 @@ import PhotoSwipeVideoPlugin from './dist/photoswipe-video-plugin.esm.js';
 const lightbox = new PhotoSwipeLightbox({
   gallery: '#gallery',
   children: 'a',
-  pswpModule: './photoswipe.esm.js',
+  pswpModule: './lib/photoswipe/photoswipe.esm.js',
 });
 
 const videoPlugin = new PhotoSwipeVideoPlugin(lightbox, {
