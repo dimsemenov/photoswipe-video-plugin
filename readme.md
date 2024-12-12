@@ -70,7 +70,7 @@ If you're providing the data directly via object:
   videoSrc: 'my-video.mp4',
 
   // Or for multiple sources;
-  // videoSrc: [
+  // videoSources: [
   //   { src: 'my-video.webm', type: 'video/webm' },
   //   { src: 'my-video.mp4', type: 'video/mp4' }
   // ] 
