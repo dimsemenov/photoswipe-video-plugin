@@ -33,7 +33,7 @@ class VideoContentSetup {
     lightbox.addFilter('domItemData', (itemData, element, linkEl) => {
       if (itemData.type === 'video' && linkEl) {
         if (linkEl.dataset.pswpVideoSources) {
-          itemData.videoSources = JSON.parse(pswpVideoSources);
+          itemData.videoSources = JSON.parse(linkEl.dataset.pswpVideoSources);
         } else if (linkEl.dataset.pswpVideoSrc) {
           itemData.videoSrc = linkEl.dataset.pswpVideoSrc;
         } else {
@@ -181,7 +181,7 @@ class VideoContentSetup {
 
     this.preloadVideoPoster(content, content.data.msrc);
 
-    content.element.style.position = 'absolute';
+    content.element.style.position = 'relative';
     content.element.style.left = 0;
     content.element.style.top = 0;
     
